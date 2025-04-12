@@ -64,6 +64,21 @@ section img {
     flex-wrap: wrap; 
     justify-content: space-around;
 }
+
+/* Modificacion de las imagenes. */
+img {
+    margin: auto;
+    width: 150px;
+    height: 200px;
+}
+
+/* Centrado de los textos. */
+.home .Imgs p {
+    margin: 5px;
+    text-align: center;
+    color: rgb(26, 25, 25);
+}
+
 .Imgs {
     background-color: rgb(235, 225, 196);
     padding: 1%;
@@ -81,6 +96,27 @@ section img {
     margin-top: 2%;
     margin-bottom: 1%;
 }
+
+
+/* Seccion institucional. */
+.insti {
+    background-color: rgb(187, 174, 158);
+    height: auto;
+    width: auto;
+    padding: 200px 0px;
+}
+
+.insti h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.insti p {
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
+
 footer {
     text-align: right;
     font-size: calc(0.7 * var(--base-font-size));
