@@ -117,6 +117,28 @@ img {
     font-size: 18px;
 }
 
+/* Seccion contacto. */
+.contacto h3 {
+    margin: 5px;
+    text-align: center;
+    font-size: 30px;
+    color: rgb(26, 25, 25);
+}
+
+.contacto .iconos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+    padding: 50px;
+}
+
+.contacto img{
+    margin: 0;
+    width: 100px;
+    height: auto;
+}
+
 footer {
     text-align: right;
     font-size: calc(0.7 * var(--base-font-size));
