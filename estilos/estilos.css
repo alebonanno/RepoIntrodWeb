@@ -120,6 +120,7 @@ img {
 /* Seccion contacto. */
 .contacto h3 {
     margin: 5px;
+    padding-top: 100px;
     text-align: center;
     font-size: 30px;
     color: rgb(26, 25, 25);
