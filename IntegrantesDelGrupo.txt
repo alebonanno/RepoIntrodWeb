@@ -1,4 +1,5 @@
 Anoten aquí su mail con el que estan registrados en github para poder incluirlos como colaboradores y de paso hacen un commit subiendo el archivo modificado:
 Alejandro Bonanno sayanigrafica@gmail.com
 Esteban Acosta soydeaca@gmail.com
-emanuelcomas96@gmail.com
+Emanuel Comas emanuelcomas96@gmail.com
+Mirian Acosta mirian.net.ar@gmail.com
