@@ -12,11 +12,14 @@ body {
 }
 header {
     max-height: 12vh;
-    background-color: rgb(245, 239, 220);
+    /* background-color: rgb(245, 239, 220); */
     color: brown;
-    padding: 2vh;
+    /* Comentado porque destruye el nav */
+    /* padding: 2vh; */
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed;
+    width: 100%;
 }
 header h1 {
     margin-top: 0;
@@ -38,8 +41,8 @@ header li a:hover {
 }
 main {
     padding: 2px;
-    padding-top: 2vh;
     min-height: 78vh;
+    padding-top: 100px;
 }
 section p {
     color: rgb(175, 175, 175);
@@ -58,45 +61,74 @@ section img {
     border-radius: 10px;
     width: 100%;
 }
-.home {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap; 
-    justify-content: space-around;
+
+/* Al usar bootstrap no es necesaria esta clase. */
+/* .home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-content: center;
+} */
+
+/* Modificacion del nav */
+header nav {
+    background-color: bisque;
 }
 
 /* Modificacion de las imagenes. */
-img {
-    margin: auto;
-    width: 150px;
-    height: 200px;
-}
-
-/* Centrado de los textos. */
-.home .Imgs p {
-    margin: 5px;
-    text-align: center;
-    color: rgb(26, 25, 25);
-}
-
 .Imgs {
     background-color: rgb(235, 225, 196);
     padding: 1%;
     margin: 5px;
+    height: 400px;
     border-radius: 5px;
     border: solid 1px rgb(252, 200, 181);
-    flex: 0 1 22%; 
     box-sizing: border-box;
     display: flex; 
     flex-direction: column;
     
 }
+
+.Imgs img {
+    margin: auto;
+    height: 200px;
+}
+
+/* Centrado de los textos. */
+.Imgs p {
+    margin: 5px;
+    text-align: center;
+    color: rgb(26, 25, 25);
+    gap: 5px;
+    max-height: 60px;
+    /* Agrega un scroll al pasarse el texto */
+    overflow-y: auto;
+    /* Estilo de scroll */
+    scrollbar-width: thin;
+}
+
+.Imgs h2 {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
 .Imgs button {
     margin-bottom: 4%;
     margin-top: 2%;
     margin-bottom: 1%;
 }
 
+
+/* Modificacion de texto 'No disponible' */
+.No-disponible {
+    background-color: red;
+    overflow: visible;
+    height: 34px;
+    font-size: 17px;
+    padding: 4px 0px;
+    border-radius: 5px;
+}
 
 /* Seccion institucional. */
 .insti {
@@ -136,7 +168,7 @@ img {
 
 .contacto img{
     margin: 0;
-    width: 100px;
+    width: 92px;
     height: auto;
 }
 
