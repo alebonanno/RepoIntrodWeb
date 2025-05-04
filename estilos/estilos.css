@@ -205,13 +205,13 @@ nav {
 
 .insti h2 {
     text-align: center;
-    font-size: 30px;
+    font-size: 26px;
 }
 
 .insti p {
     text-align: center;
     color: black;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 /* Seccion contacto. */
@@ -219,7 +219,7 @@ nav {
     margin: 5px;
     padding-top: 100px;
     text-align: center;
-    font-size: 30px;
+    font-size: 26px;
     color: rgb(26, 25, 25);
 }
 
@@ -233,7 +233,7 @@ nav {
 
 .contacto img{
     margin: 0;
-    width: 92px;
+    width: 4rem;
     height: auto;
 }
 
@@ -278,7 +278,9 @@ footer {
 }
 
 @media only screen and (min-width: 769px) {
-       
+    .contacto img{
+        width: 92px;
+    }
 }
 
 @media only screen and (min-width: 1000px) { 
