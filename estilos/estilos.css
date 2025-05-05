@@ -20,7 +20,9 @@ header {
 }
 header picture {
     width: 100%;
+    padding-top: 10px;
     margin: 5px;
+    margin-left: calc(100vw/20);
     background-size: contain;
     /* border: 1px solid blue; */
 }
@@ -258,6 +260,7 @@ nav {
 .contacto img{
     margin: 0 5px;
     width: 3rem;
+    max-width: 55px;
     height: auto;
 }
 
