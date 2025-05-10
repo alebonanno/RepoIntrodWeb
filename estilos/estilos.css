@@ -158,6 +158,11 @@ nav {
     font-size: 10px;
 }
 
+/* Tamaño texto de nav */
+nav li {
+    font-size: 12px;
+}
+
 /* Modificacion de las imagenes. */
 .Imgs {
     background-color: rgb(235, 225, 196);
