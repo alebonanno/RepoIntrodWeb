@@ -2,105 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos\estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="estilos\normalize.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="estilos\estilos.css"/>
     <title>IDW S.A - Reserva tu salon de cumpleaños</title>
 </head>
 <body>
     <header>
         <!-- Menu de navegación. -->
-        <h1>Bienvenidos a IDW S.A</h1>
+        
         <nav>
-            <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#institucional">Instituciónal</a></li>
-                <li><a href="#contactos">Contacto</a></li>
+            <picture>
+                <source srcset="./images/hamburguesa.svg" media="(max-width: 300px)">
+                <img id="logo" src="./images/logo_idw.svg" alt="Logo de IDW Introducción al Desarrollo Web">
+            </picture>
+            <h1>Bienvenidos a IDW S.A.</h1>
+            <ul class="menu">
+                <li><a class="activo" href="index.html">Inicio</a></li>
+                <li><a href="institucional.html">Instituciónal</a></li>
+                <li><a href="contactos.html">Contacto</a></li>
+
             </ul>    
         </nav>
         
     </header>
-    <main>
+    <!-- El id 'main' es para vincular con el nav -->
+    <main id="main">
     <!-- Sección de casas para reserva disponibles/no disponibles. -->
-    <section class="home">
+    <section class="container ">
 
-        <div class="Imgs">
-            <h2>Salon happypark: $120.000</h2>
-            <img src="./images/happypark_slider_16.jpg" alt="Salon1"/>
-            <p>
-                Salón moderno y colorido, ideal para celebraciones infantiles y eventos familiares inolvidables.
-            </p>
-            <button>Reservar</button>
-        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon happypark: <br/>$120.000</h2>
+                    <img src="./images/happypark_slider_16.jpg" alt="Salon1"/>
+                    <p>
+                        Salón moderno y colorido, ideal para celebraciones infantiles y eventos familiares inolvidables.
+                    </p>
+                    <button type="button" class="btn btn-success">Reservar</button>
+                </div>
+            </div>
 
-        <div class="Imgs">
-            <h2>Salon jungla: $100.000</h2>
-            <img src="./images/NUESTRAS-JUNGLAS-MIXCOAC.jpg" alt="Salon2"/>
-            <p>
-                ofrece un ambiente selvático y divertido, perfecto para fiestas infantiles llenas de aventura y fantasía.
-            </p>
-            <p><u>No disponible</u></p>
-        </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon jungla: <br/>$100.000</h2>
+                    <img src="./images/NUESTRAS-JUNGLAS-MIXCOAC.jpg" alt="Salon2"/>
+                    <p>
+                        Ofrece un ambiente selvático y divertido, perfecto para fiestas infantiles llenas de aventura y fantasía.
+                    </p>
+                    <p class="No-disponible"><u>No disponible</u></p>
+                </div>
+            </div>
 
-        <div class="Imgs">
-            <h2>Salon grande: $280.000</h2>
-            <img src="./images/salon-grande.jpg" alt="Salon3"/>
-            <p>
-                Ofrece un espacio amplio y elegante, ideal para eventos sociales, reuniones y celebraciones especiales.
-            </p>
-            <button>Reservar</button>
-        </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon grande: <br/>$280.000</h2>
+                    <img src="./images/salon-grande.jpg" alt="Salon3"/>
+                    <p>
+                        Ofrece un espacio amplio y elegante, ideal para eventos sociales, reuniones y celebraciones especiales.
+                    </p>
+                    <button type="button" class="btn btn-success">Reservar</button>
+                </div>
+            </div>
 
-        <div class="Imgs">
-            <h2>Salon de fiesta: $150.000</h2>
-            <img src="./images/Salon_de_fiesta.jpg" alt="Salon1"/>
-            <p>
-                Lugar perfecto para disfrutar momentos únicos, con música, color y diversión garantizada
-            </p>
-            <button>Reservar</button>
-        </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon de fiesta: <br/>$150.000</h2>
+                    <img src="./images/Salon_de_fiesta.jpg" alt="Salon1"/>
+                    <p>
+                        Lugar perfecto para disfrutar momentos únicos, con música, color y diversión garantizada
+                    </p>
+                    <button type="button" class="btn btn-success">Reservar</button>
+                </div>
+            </div>
 
-        <div class="Imgs">
-            <h2>Salon moderno: $240.000</h2>
-            <img src="./images/Salon_moderno.jpg" alt="Salon2"/>
-            <p>
-                Combina estilo contemporáneo y comodidad, ideal para eventos con un toque actual y sofisticado.
-            </p>
-            <p><u>No disponible</u></p>
-        </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon moderno: <br/>$240.000</h2>
+                    <img src="./images/Salon_moderno.jpg" alt="Salon2"/>
+                    <p>
+                        Combina estilo contemporáneo y comodidad, ideal para eventos con un toque actual y sofisticado.
+                    </p>
+                    <p class="No-disponible"><u>No disponible</u></p>
+                </div>
+            </div>
 
-        <div class="Imgs">
-            <h2>Salon comedor: $230.000</h2>
-            <img src="./images/salon_comedor.jpg" alt="Salon3"/>
-            <p>
-                Espacio acogedor y funcional, perfecto para celebraciones con servicio de comida y reuniones familiares.
-            </p>
-            <button>Reservar</button>
-        </div>
+            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                <div class="Imgs">
+                    <h2>Salon comedor: <br/>$230.000</h2>
+                    <img src="./images/salon_comedor.jpg" alt="Salon3"/>
+                    <p>
+                        Espacio acogedor y funcional, perfecto para celebraciones con servicio de comida y reuniones familiares.
+                    </p>
+                    <button type="button" class="btn btn-success">Reservar</button>
+                </div>
+            </div>
 
     </section>
 </main>
 
-    <section class="insti" id="institucional">
-        <h2>Quienes somos</h2>
-        <p>
-            - Somos una empresa dedicada a la reserva de salones para fiestas infantiles con mas de 20 años de experiencia.<br/>
-            - Ofrecemos reserva de salones de diferentes temáticas y tamaños.<br/>
-            - Nuestros establecimientos se encuentran en: Concordia, Paraná y Buenos Aires<br/>.
-            Por que elegirnos: <br/>
-            - Disponemos de variedad en salones, personalizamos la temática segun el cliente y desde que reserva hasta el final del evento nos aseguramos de que todo transcurra sin problemas.<br/>
-        </p>
-    </section>
-
-    <section class="contacto" id="contactos">
-        <h3>Contactanos</h3>
-        <div class="iconos">
-            <img src="https://cdn-icons-png.freepik.com/256/15713/15713420.png?semt=ais_hybrid" alt="Instagram">
-            <img src="https://cdn-icons-png.freepik.com/256/15713/15713427.png?semt=ais_hybrid" alt="Facebook">
-            <img src="https://images.icon-icons.com/326/PNG/256/Letter_X_black_34834.png" alt="X">
-            <img src="https://cdn-icons-png.freepik.com/256/15713/15713434.png?semt=ais_hybrid" alt="Whatsapp">
-            <img src="https://osx.telegram.org/updates/site/logo.png" alt="Telegram">
-        </div>
-    </section>
+    
 
     <!-- Footer de la pagina. -->
     <footer>
