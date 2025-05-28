@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* Aplica el color a todo el body */
+body{
+    background: rgba(248, 237, 223, 0.774);
+}
+
+h2 {
+    text-align: center;
+}
+
+form{
+    padding-bottom: 260px;
+    padding: 74px 50px;
+    margin: 0 100px 100px 100px;
+}
