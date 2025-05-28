@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mostrarSalones();
 });
 
-
 function mostrarSalones(){
     const tablaBody = document.querySelector('#tablaSalones tbody');
     tablaBody.innerHTML = ''; //Limpia el contenido previo
@@ -28,9 +27,9 @@ function mostrarSalones(){
         <td>${salon.direccion}</td>
         <td>${salon.descripcion}</td>
         <td>${salon.valor}</td>
-        <td>
-            <button class="editar-btn" data-index="${index}">Editar</button>
-            <button class="borrar-btn" data-index="${index}">Borrar</button>
+        <td class="d-flex justify-content-center gap-2">
+            <button class="btn btn-primary editar-btn" data-index="${index}">Editar</button>
+            <button class="btn btn-primary borrar-btn" data-index="${index}">Borrar</button>
         </td>
         `;
         tablaBody.appendChild(fila);
