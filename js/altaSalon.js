@@ -23,13 +23,16 @@ function mostrarSalones(){
     salones.forEach((salon, index) =>{
         const fila = document.createElement('tr');
         fila.innerHTML = `
-        <td>${salon.nombre}</td>
-        <td>${salon.direccion}</td>
-        <td>${salon.descripcion}</td>
-        <td>${salon.valor}</td>
-        <td class="d-flex justify-content-center gap-2">
+        <td class='centrado-vertical'>${salon.nombre}</td>
+        <td>
+            <img src='./images/Salon_comedor.jpg' alt='Imagen del salón' style='width: 100px; height: auto;'>
+        </td>
+        <td class='centrado-vertical'>${salon.direccion}</td>
+        <td class='centrado-vertical'>${salon.descripcion}</td>
+        <td class='centrado-vertical'>${salon.valor}</td>
+        <td class="d-flex justify-content-center gap-2 py-4">
             <button class="btn btn-primary editar-btn" data-index="${index}">Editar</button>
-            <button class="btn btn-primary borrar-btn" data-index="${index}">Borrar</button>
+            <button class="btn btn-danger borrar-btn" data-index="${index}">Borrar</button>
         </td>
         `;
         tablaBody.appendChild(fila);

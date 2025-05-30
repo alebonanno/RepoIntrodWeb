@@ -30,6 +30,11 @@ textarea{
     resize: none;
 }
 
+/* Clase para centrar verticalmente el texto de la tabla. */
+.centrado-vertical {
+    vertical-align: middle;
+}
+
 /* Modificación del footer. */
 footer {
     text-align: right;
