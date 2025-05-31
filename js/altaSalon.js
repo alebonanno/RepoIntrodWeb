@@ -82,8 +82,8 @@ let indiceEdicion = null;
 
         // Elimina el objeto de edicion temporal guardaedo en 'sessionStorage', porque ya no es necesario.
         sessionStorage.removeItem('salonAEditar');
-        // Redirige a 'index.html'.
-        window.location.href = 'index.html';
+        // Redirige a 'altaSalon.html', asi refresca la actualización.
+        window.location.href = 'altaSalon.html';
 
     })
 
