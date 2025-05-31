@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+/* Aplica el color a todo el body */
+body{
+    background: rgba(248, 237, 223, 0.774);
+}
+
+/* modificación del titulo. */
+h2{
+    margin: 0;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+}
+
+/* Modificación del formulario. */
+form{
+    padding-bottom: 260px;
+    padding: 74px 50px;
+    margin: 0 100px 100px 100px;
+}
+
+textarea{
+    /* Se evita la posibilidad de redimension del lado del cliente. */
+    resize: none;
+}
+
+/* Clase para centrar verticalmente el texto de la tabla. */
+.centrado-vertical {
+    vertical-align: middle;
+}
+
+/* Modificación del footer. */
+footer {
+    text-align: right;
+    font-size: calc(0.7 * var(--base-font-size));
+}
