@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const salir = document.getElementById('logout');
     if (salir) {
         salir.addEventListener("click", () => {
-            sessionStorage.clear();
-            window.location.href = 'login.html';
+            //sessionStorage.clear();
+            //window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
     const form = document.getElementById('formSalon');
@@ -21,11 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const descripcion = document.getElementById('descripcion').value;
         const salon = {nombre, direccion, descripcion, valor};
         const salones = JSON.parse(localStorage.getItem('salones')) || [];
-        salones.push(salon);
+        const indexEditar = sessionStorage.getItem('indexEditar');
+        if (indexEditar !== null) {
+            //Estamos editando un elemento existente
+            salones[indexEditar] = salon;
+            sessionStorage.removeItem('indexEditar');//Borramos el item a editar
+        } else {
+            //Estamos agregando un nuevo elemento
+            salones.push(salon);
+        }
+        
         localStorage.setItem('salones', JSON.stringify(salones));//agregamos el elemento salones al local storage
 
 
-        alert(` El nuevo salon tiene los siguientes atributos nombre: ${nombre} --direccion: ${direccion} --descripcion: ${descripcion} --valor: ${valor}`);
+        alert(` Salon guardado: \n nombre: ${nombre} \n--direccion: ${direccion} \n--descripcion: ${descripcion} \n--valor: ${valor}`);
         form.reset();//Limpia el formulario
         
         mostrarSalones();
@@ -36,13 +46,17 @@ function mostrarSalones(){
     const tablaBody = document.querySelector('#tablaSalones tbody');
     tablaBody.innerHTML = ''; //Limpia el contenido previo
     const salones = JSON.parse(localStorage.getItem('salones')) || [];
-    salones.forEach((salon) =>{
+    salones.forEach((salon,index) =>{  //index es una posición unica en el array
         const fila = document.createElement('tr');
         fila.innerHTML = `
         <td>${salon.nombre}</td>
         <td>${salon.direccion}</td>
         <td>${salon.descripcion}</td>
         <td>${salon.valor}</td>
+        <td>
+            <button class="btn btn-sm btn-warning me-2" onclick="editarSalon(${index})">Editar</button>
+            <button class="btn btn-sm btn-danger" onclick="eliminarSalon(${index})">Eliminar</button>
+        </td>
         `;
         tablaBody.appendChild(fila);
     })
