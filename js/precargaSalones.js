@@ -57,7 +57,8 @@
 
         ];
 
-        localStorage.setItem('salones', JSON.stringify(salonesPrecarga));
+        localStorage.setItem('salones', JSON.stringify(salonesPrecarga));/*Transforma a salonesPrecarga en un JSON y lo guarda 
+                                                    en localStorage bajo la clave 'salones'*/
     };
     if (!localStorage.getItem('imagenes')) { // Verificar si ya existen datos en localStorage y sino precarga unos de ejemplo
         const imagenesPrecarga = [
@@ -86,9 +87,10 @@
 
     mostrarSalones();    
 function mostrarSalones() {
-    const contenedor = document.querySelector('#containerFichas');
+    const contenedor = document.querySelector('#containerFichas');//Selecciona el primer elemento que encuentre que tenga el atributo id="containerFichas"
+                                                                    //  en el HTML. y lo guarda en contenedor para poder usarlo
     contenedor.innerHTML = ''; // Limpia el contenido previo
-    const salones = JSON.parse(localStorage.getItem('salones')) || [];
+    const salones = JSON.parse(localStorage.getItem('salones')) || []; //obtiene el json de localStorage y lo convierte en array para poder usarlo
     const imagenes = JSON.parse(localStorage.getItem('imagenes')) || []; // Obtener imágenes
 
     salones.forEach((salon) => {
@@ -99,12 +101,13 @@ function mostrarSalones() {
         const imagenSalon = imagenes.find(img => img.idSalon === salon.idSalon);
 
         // Definir clases y atributos del botón según el estado
-        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";
-        const botonDisabled = salon.estado === "Reservado" ? "disabled" : "";        
-        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : "";
+        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";/*operador ternario, si es reservado se vera rojo sino verde*/
+        const botonDisabled = salon.estado === "Reservado" ? "disabled" : "";        //operador ternario si esta Reservado el boton no estara disponible para usarlo
+        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; /*Si esta Disponible
+                                                            al hacer click se redirigirá a presupuesto.html llevando el numero de salon*/
 
-
-        ficha.innerHTML = `
+        /*Crea la ficha de un salon determinado en el array salones*/
+        ficha.innerHTML = `     
             <div class="Imgs">
                 <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
                 <img src="${imagenSalon ? imagenSalon.ruta : 'images/default.jpg'}" alt="${salon.nombre}" />
@@ -114,6 +117,6 @@ function mostrarSalones() {
             </div>
         `;
 
-        contenedor.appendChild(ficha);
+        contenedor.appendChild(ficha);  //Muestra la ficha en el html
     });
 }

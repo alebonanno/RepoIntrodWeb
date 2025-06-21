@@ -1,6 +1,6 @@
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Cargar el nav
+document.addEventListener("DOMContentLoaded", function () {//Espera a que este el DOM cargado antes de ejecutar la funcion
+    // Busca el elemento HEADER y cargar el nav dentro
     document.querySelector("header").innerHTML = `
         <nav>
             <picture>
@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Verificar si hay un usuario en sessionStorage
     const usuario = sessionStorage.getItem("usuario");
-    const elementosMiembros = document.querySelectorAll(".soloMiembros");
-    const loginLogoutBtn = document.getElementById("loginLogoutBtn");
+    const elementosMiembros = document.querySelectorAll(".soloMiembros"); //Busca en el Dom los elementos class="soloMiembros" y los guarda en la variable
+    const loginLogoutBtn = document.getElementById("loginLogoutBtn"); //Busca el boton de login/Logout
 
     if (usuario) {
-        // Si hay usuario, mostrar los elementos de miembros
+        // Si hay usuario, mostrar los elementos de miembros (New Salon, New Servicio)
         elementosMiembros.forEach(el => el.style.display = "block");
 
         // Cambiar el botón a "Logout"

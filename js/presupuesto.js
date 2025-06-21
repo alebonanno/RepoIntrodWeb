@@ -1,22 +1,5 @@
 
-/*evento onclick{
 
-
-
-function presupuesto(salon, servicios[]){
-    salon = 100;
-    servicios = [20,50,80]
-
-    totalServicios = sumatoria(servicios)
-    totalPresupuesto = totalServicios+salon
-    guardar localStorage(totalPresupuesto)
-    return ok
-}
-
-sumatoria(servicios)
-
-}
-*/
         // Obtener el parámetro idSalon de la URL
 const urlParams = new URLSearchParams(window.location.search);
 const idSalon = urlParams.get('idSalon');
@@ -36,7 +19,7 @@ if (idSalon) {
     const imagenSalon = imagenes.find(img => img.idSalon === idSalon);
 
     if (salonSeleccionado) {
-        // Mostrar los datos en la página
+        // Mostrar los datos del salón en la página
         document.getElementById('nombreSalon').textContent = salonSeleccionado.nombre;
         document.getElementById('direccionSalon').textContent = salonSeleccionado.direccion;
         document.getElementById('descripcionSalon').textContent = salonSeleccionado.descripcion;
@@ -83,12 +66,13 @@ function mostrarServicios(idSalon) {
 
     
 
-    // Agregar formulario para ingresar nombre y apellido
+    // Agregar formulario para ingresar nombre y apellido y email
     const filaFormulario = document.createElement('tr');
     filaFormulario.innerHTML = `
         <td colspan="3">
             <label>Nombre: <input type="text" id="nombreUsuario" required></label>
             <label>Apellido: <input type="text" id="apellidoUsuario" required></label>
+            <label>E-m a i l:         <input type="text" id="emailUsuario" required></label>
         </td>
     `;
     tablaBody.appendChild(filaFormulario);
@@ -118,6 +102,7 @@ function actualizarTotal() {
 function guardarPresupuesto(idSalon) {
     const nombre = document.getElementById('nombreUsuario').value.trim();
     const apellido = document.getElementById('apellidoUsuario').value.trim();
+    const email = document.getElementById('emailUsuario').value.trim();
     const total = parseFloat(document.getElementById('totalPrecio').textContent.replace('$', '').trim()) || 0;
 
     if (!nombre || !apellido) {
