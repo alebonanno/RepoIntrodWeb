@@ -17,6 +17,7 @@ header {
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     position: fixed;
+    z-index: 1000;
     
 }
 header picture {
@@ -71,7 +72,7 @@ header li a:hover {
     position: absolute;
     top: 40px;
     left: -100px; /* Oculta el menú fuera de la pantalla */
-    width: 120px;
+    width: 140px;
     background-color: #333333b7;
     padding: 10px;
     list-style: none;
@@ -234,6 +235,29 @@ footer {
     text-align: right;
     font-size: calc(0.7 * var(--base-font-size));
 }
+.presupuesto {
+    width: 60%;
+}
+.presupuesto h2{font-size: 1em;}
+#tablaServicios{
+    font-size: .7em;
+}
+#tablaServicios input{
+    margin-top: 3px;
+}
+.nav-link{
+    text-decoration: none;
+    margin: 2px;
+    margin-top: -4px;
+    padding: 2px;
+}
+.nav-link:hover{
+    color:#333333b7;
+}
+.nav-link.activo {
+    color: #800020 !important; /* Color bordeau */
+}
+
 @media only screen and (min-width: 301px){
     header ul {
         list-style: none;
@@ -246,19 +270,25 @@ footer {
         padding: 0;
         position: static;
         margin-top: -10px;
-        width: 260px;
-        margin-left: auto;
+       width: 260px;
+       margin-left: auto;
         margin-right: auto;
         /* position: static;        */
         /* transition: transform 0.5s ease-in-out, opacity 0.3s; */
         opacity: 1; 
         background-color: rgba(240, 248, 255, 0); 
+        
+        display: flex; /* Asegura que los elementos estén en línea */
+        justify-content: center; /* Centra los elementos */
+        gap: 5px; /* Reduce el espacio entre los elementos */
+        padding: 5px 0; /* Ajusta el espacio interno */
+        width: auto;
+
     }
-/*     
     .menu li {
-        padding: 2px;
-    } */
-    
+        flex: 1 1 auto;
+        padding: 5px 10px; /* Reduce el espacio interno */
+        font-size: 12px;}
     .menu a {
         color:  rgba(0, 0, 0, 0.288);
         text-decoration: none;

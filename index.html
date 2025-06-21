@@ -11,55 +11,25 @@
 <!-- Con estas modificaciónesel footer queda abajo de todo sin importar el contenido del body. -->
 <body class="d-flex flex-column">
     <header>
-        <!-- Menu de navegación. -->
-        
         <nav>
-            <picture>
-                <source srcset="./images/hamburguesa.svg" media="(max-width: 300px)">
-                <img id="logo" src="./images/logo_idw.svg" alt="Logo de IDW Introducción al Desarrollo Web">
-            </picture>
-            <h1>Bienvenidos a IDW S.A.</h1>
-            <ul class="menu">
-                <li><a class="activo" href="index.html">Inicio</a></li>
-                <li><a href="institucional.html">Instituciónal</a></li>
-                <li><a href="contactos.html">Contacto</a></li>
-                <li><a href="login.html">Login</a></li>
-            </ul>    
+            <!-- Menu de navegación lo agrega JavaScript mediante el archivo paginaBasica.js-->
         </nav>
-        
     </header>
-    <!-- El id 'main' es para vincular con el nav -->
-<main id="main" class="flex-fill container">
-    <!-- Sección de casas para reserva disponibles/no disponibles. -->
-    <section class="container ">
-
-        <h3 class="mt-3">Lista de Salones</h3>
-        <table class="table table-striped mt-3 mx-auto" id="tablaSalones">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <!-- Donde ira la imagen generica. -->
-                    <th>Imagen</th>
-                    <th>Dirección</th>
-                    <th>Descripción</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-            <!--Esto lo agrega JavaScript-->
-            </tbody>
-        </table>
-
-    </section>
-</main>
-
-    
-
-    <!-- Footer de la pagina. -->
+    <main id="main">
+        <section class="container " >
+            <div class="row justify-content-center" id="containerFichas"></div>
+            <!--Se cargarán todas las fichas mostrando los salones disponibles mediante JavaScript usando el archivo precargaSalones.js-->
+        </section>
+    </main>
     <footer>
-        <p>&copy; 2025 IDW S.A. - Todos los derechos reservados.</p>
+       <!-- footer lo agrega JavaScript mediante el archivo paginaBasica.js-->
     </footer>
+<<<<<<< HEAD
     <script src="./js/index.js"></script>
 
+=======
+    <script src="js/paginaBasica.js"></script>
+    <script src="js/precargaSalones.js"></script>
+>>>>>>> 4taEntrega
 </body>
 </html>
