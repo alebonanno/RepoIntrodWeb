@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
+
+document.addEventListener('DOMContentLoaded', () => { //Con DOMContentLoaded hace que el evento se ejecuta cuando el contenido del HTML ha sido completamente cargado.
     if (!sessionStorage.getItem("usuario")) {
         alert('Debe loguearse');
         window.location.href = 'login.html';
@@ -8,11 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const salir = document.getElementById('logout');
     if (salir) {
         salir.addEventListener("click", () => {
-            //sessionStorage.clear();
-            //window.location.href = 'login.html';
+           // sessionStorage.clear();
             window.location.href = 'index.html';
         });
     }
+  
+
     const form = document.getElementById('formSalon');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const direccion = document.getElementById('direccion').value;
         const descripcion = document.getElementById('descripcion').value;
         const salon = {nombre, direccion, descripcion, valor};
+
         const salones = JSON.parse(localStorage.getItem('salones')) || [];
         const indexEditar = sessionStorage.getItem('indexEditar');
         if (indexEditar !== null) {
