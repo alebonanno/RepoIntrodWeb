@@ -13,7 +13,7 @@ h2 {
 }
 
 form{
-    padding-bottom: 260px;
-    padding: 74px 50px;
+    /* Arriba, derecha, abajo, izquierda. */
+    padding: 74px 50px 0px 50px;
     margin: 0 100px 100px 100px;
 }
