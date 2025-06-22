@@ -5,6 +5,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const idSalon = urlParams.get('idSalon');
 
 document.addEventListener("DOMContentLoaded", function () {
+    /*Esperamos a que se cargue la página y luego modificamos los estilos
+    del main*/
     document.querySelector("main").style.width = "60%";
     document.querySelector("main").style.margin = "0% 20%";
 });
@@ -34,7 +36,7 @@ function mostrarServicios(idSalon) {
     const tablaBody = document.querySelector('#tablaServicios tbody');
     tablaBody.innerHTML = ''; // Limpia el contenido previo
     const servicios = JSON.parse(localStorage.getItem('servicios')) || [];
-    const usuarioEnSesion = sessionStorage.getItem('usuario'); // Verificar si hay usuario en sesión
+    const usuarioEnSesion = sessionStorage.getItem('usuario'); // Extrae si hay usuario en sesión
     let total = parseFloat(document.getElementById('valorSalon').textContent.replace('$', '').trim()) || 0;
 
     servicios.forEach((servicio, index) => {
@@ -105,8 +107,8 @@ function guardarPresupuesto(idSalon) {
     const email = document.getElementById('emailUsuario').value.trim();
     const total = parseFloat(document.getElementById('totalPrecio').textContent.replace('$', '').trim()) || 0;
 
-    if (!nombre || !apellido) {
-        alert("Por favor, ingresa tu nombre y apellido.");
+    if (!nombre || !apellido || !email) {
+        alert("Por favor, ingresa tu nombre, apellido y email.");
         return;
     }
 
