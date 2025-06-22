@@ -1,66 +1,85 @@
 
-document.addEventListener('DOMContentLoaded', () => { //Con DOMContentLoaded hace que el evento se ejecuta cuando el contenido del HTML ha sido completamente cargado.
-    if (!sessionStorage.getItem("usuario")) {
-        alert('Debe loguearse');
+document.addEventListener('DOMContentLoaded', () => { //Espera a que se carge el html para ejecutar el codigo
+    if (!sessionStorage.getItem("usuario")) {//Verifica que se ha iniciado sesión
+        alert('Debe loguearse');            //Sino salta una alerta y redirige al login.html
         window.location.href = 'login.html';
         return;
     }
 
-    const salir = document.getElementById('logout');
-    if (salir) {
-        salir.addEventListener("click", () => {
-           // sessionStorage.clear();
+    const salir = document.getElementById('volver');//Revisa que si está el boton de volver 
+    if (salir) {                                    //En caso de oprimirlo nos regresa al 
+        salir.addEventListener("click", () => {     //index.html
             window.location.href = 'index.html';
         });
     }
-  
 
-    const form = document.getElementById('formSalon');
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const nombre = document.getElementById('nombre').value;
-        const valor = document.getElementById('valor').value;
+    const form = document.getElementById('formSalon');//busca el formulario
+    form.addEventListener('submit', function(event) {   //Esto se ejecuta al clickear el boton guardar salón
+        event.preventDefault();                         //Evita que el formulario por defecto recargue la página cuando se envía el formulario.
+        const nombre = document.getElementById('nombre').value; //guarda los valores ingresados en los
+        const valor = document.getElementById('valor').value;   //input en variables 
         const direccion = document.getElementById('direccion').value;
         const descripcion = document.getElementById('descripcion').value;
-        const salon = {nombre, direccion, descripcion, valor};
 
-        const salones = JSON.parse(localStorage.getItem('salones')) || [];
-        const indexEditar = sessionStorage.getItem('indexEditar');
+        const salones = JSON.parse(localStorage.getItem('salones')) || []; //Obtiene el valor almacenado en localStorage y convierte el JSON en un array de objetos
+        const indexEditar = sessionStorage.getItem('indexEditar'); //Obtiene el ID del salon a editar
+
         if (indexEditar !== null) {
-            //Estamos editando un elemento existente
-            salones[indexEditar] = salon;
-            sessionStorage.removeItem('indexEditar');//Borramos el item a editar
-        } else {
-            //Estamos agregando un nuevo elemento
-            salones.push(salon);
+            // Editando un salón existente
+            salones[indexEditar].nombre = nombre;
+            salones[indexEditar].direccion = direccion;
+            salones[indexEditar].descripcion = descripcion;
+            salones[indexEditar].valor = valor;
+            sessionStorage.removeItem('indexEditar'); //Borra el idSalon que estaba en indexEditar en el localStorage
+        } else {//Si no habia un valor en indexEditar es porque se esta ingresando un nuevo salón
+            // Agregando un nuevo salón con id autoincremental, revisa cuantos elementos hay en salones, lo converte en entero,
+            //le suma 1 y lo convierte en string. Si no hay salones le asigna "1"
+            const nuevoId = salones.length > 0 ? (parseInt(salones[salones.length - 1].idSalon) + 1).toString() : "1";
+            const salon = {     //Arma el objeto salon 
+                idSalon: nuevoId,
+                nombre,
+                direccion,
+                descripcion,
+                valor,
+                imagenId: "0",
+                estado: "Disponible"
+            };
+            salones.push(salon);    //Lo agrega al array de salones
         }
-        
-        localStorage.setItem('salones', JSON.stringify(salones));//agregamos el elemento salones al local storage
 
-
-        alert(` Salon guardado: \n nombre: ${nombre} \n--direccion: ${direccion} \n--descripcion: ${descripcion} \n--valor: ${valor}`);
-        form.reset();//Limpia el formulario
-        
-        mostrarSalones();
+        localStorage.setItem('salones', JSON.stringify(salones)); //Parsea el array de salones a JSON y lo almacena en localstorage
+        //Lanza un alerta con los datos que se han guardado
+        alert(`Salon guardado:\nNombre: ${nombre}\nDirección: ${direccion}\nDescripción: ${descripcion}\nValor: ${valor}`);
+        form.reset();   //Borra los datos del formulario
+        mostrarSalones();   //ejecuta la funcion para mostrar la lista de salones
     });
+
     mostrarSalones();
 });
-function mostrarSalones(){
-    const tablaBody = document.querySelector('#tablaSalones tbody');
-    tablaBody.innerHTML = ''; //Limpia el contenido previo
-    const salones = JSON.parse(localStorage.getItem('salones')) || [];
-    salones.forEach((salon,index) =>{  //index es una posición unica en el array
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
+
+function mostrarSalones() {
+    const tablaBody = document.querySelector('#tablaSalones tbody'); //Busca el elemento tbody en la tabla con el id tablaSalones 
+    tablaBody.innerHTML = ''; // Limpia el contenido previo
+    const salones = JSON.parse(localStorage.getItem('salones')) || []; //Busca la lista de salones
+    
+    salones.forEach((salon, index) => { 
+        //Recorre el array para tomar los datos de cada salon, index es la posición de cada salon en el array 
+        const fila = document.createElement('tr');  //Crea un elemento fila de tabla y lo almacena en la variable fila
+        //Crea el contenido de la fila de la tabla según los datos del salón y agrega los botones editar y eliminar
+        fila.innerHTML = `                          
+        <!--<td>${salon.idSalon}</td>-->
         <td>${salon.nombre}</td>
         <td>${salon.direccion}</td>
         <td>${salon.descripcion}</td>
         <td>${salon.valor}</td>
+        <td>${salon.estado}</td>
         <td>
             <button class="btn btn-sm btn-warning me-2" onclick="editarSalon(${index})">Editar</button>
             <button class="btn btn-sm btn-danger" onclick="eliminarSalon(${index})">Eliminar</button>
         </td>
         `;
-        tablaBody.appendChild(fila);
-    })
+        tablaBody.appendChild(fila); // Agrega la fila a la tabla en el HTML.
+
+
+    });
 }
