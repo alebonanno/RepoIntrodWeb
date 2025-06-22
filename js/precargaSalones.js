@@ -63,7 +63,7 @@
     if (!localStorage.getItem('imagenes')) { // Verificar si ya existen datos en localStorage y sino precarga unos de ejemplo
         const imagenesPrecarga = [
             { idImagenes: "0", idSalon: "0", ruta: "images/logo_idw.svg" },
-            { idImagenes: "1", idSalon: "1", ruta: "../images/happypark_slider_16.jpg" },
+            { idImagenes: "1", idSalon: "1", ruta: "images/happypark_slider_16.jpg" },
             { idImagenes: "2", idSalon: "2", ruta: "images/NUESTRAS-JUNGLAS-MIXCOAC.jpg" },
             { idImagenes: "3", idSalon: "3", ruta: "images/salon-grande.jpg" },
             { idImagenes: "4", idSalon: "4", ruta: "images/Salon_de_fiesta.jpg" }, 
@@ -85,7 +85,7 @@
     };
 
 
-    mostrarSalones();    
+    mostrarSalones();    /*
 function mostrarSalones() {
     const contenedor = document.querySelector('#containerFichas');//Selecciona el primer elemento que encuentre que tenga el atributo id="containerFichas"
                                                                     //  en el HTML. y lo guarda en contenedor para poder usarlo
@@ -101,12 +101,12 @@ function mostrarSalones() {
         const imagenSalon = imagenes.find(img => img.idSalon === salon.idSalon);
 
         // Definir clases y atributos del botón según el estado
-        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";/*operador ternario, si es reservado se vera rojo sino verde*/
+        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";//operador ternario, si es reservado se vera rojo sino verde
         const botonDisabled = salon.estado === "Reservado" ? "disabled" : "";        //operador ternario si esta Reservado el boton no estara disponible para usarlo
-        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; /*Si esta Disponible
-                                                            al hacer click se redirigirá a presupuesto.html llevando el numero de salon*/
+        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; //Si esta Disponible
+                                                            //al hacer click se redirigirá a presupuesto.html llevando el numero de salon
 
-        /*Crea la ficha de un salon determinado en el array salones*/
+        //Crea la ficha de un salon determinado en el array salones
         ficha.innerHTML = `     
             <div class="Imgs">
                 <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
@@ -118,5 +118,43 @@ function mostrarSalones() {
         `;
 
         contenedor.appendChild(ficha);  //Muestra la ficha en el html
+    });
+}*/
+
+function mostrarSalones() {
+    const contenedor = document.querySelector('#containerFichas'); 
+    contenedor.innerHTML = ''; // Limpia el contenido previo
+    const salones = JSON.parse(localStorage.getItem('salones')) || []; 
+    const imagenes = JSON.parse(localStorage.getItem('imagenes')) || []; 
+
+    salones.forEach((salon) => {
+        const ficha = document.createElement('div');
+        ficha.classList.add('col-12', 'col-sm-6', 'col-md-4', 'mb-4'); 
+
+        // Buscar la imagen correspondiente al salón
+        let imagenSalon = imagenes.find(img => img.idSalon === salon.idSalon);
+
+        // Si el salón tiene imagenId "0", usar la imagen por defecto con idImagenes "0"
+        if (salon.imagenId === "0") {
+            imagenSalon = imagenes.find(img => img.idImagenes === "0");
+        }
+
+        // Definir clases y atributos del botón según el estado
+        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";
+        const botonDisabled = salon.estado === "Reservado" ? "disabled" : "";        
+        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; 
+
+        // Crear la ficha del salón
+        ficha.innerHTML = `     
+            <div class="Imgs">
+                <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
+                <img src="${imagenSalon ? imagenSalon.ruta : 'images/default.jpg'}" alt="${salon.nombre}" />
+                <p>${salon.descripcion}</p>
+                <p>${salon.direccion}</p>
+                <button type="button" class="btn ${botonClase}" ${botonDisabled} ${botonOnClick}>${salon.estado}</button>
+            </div>
+        `;
+
+        contenedor.appendChild(ficha);  
     });
 }
