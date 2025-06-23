@@ -120,6 +120,35 @@ picture img{
     overflow: visible !important;
 }
 
+/* Estiulos para el fondo inicial de la página. */
+.fondoEventos {
+    width: 100%;
+    height: 300px;
+    margin: 10px 0px;
+    background-image: url(/images/fondoEventos.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Se crea el overlay 'bisque' con opacidad. */
+.fondoEventos::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: bisque;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+/* Sea fecta a la etiqueta 'p' de manera mas especifica. */
+.fondoEventos > p {
+    position: relative;
+    z-index: 1;
+    color: black !important;
+}
+
 header h1 {    
     /* border: 1px solid red; */
     font-size: 20px;
