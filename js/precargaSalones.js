@@ -107,13 +107,14 @@ function mostrarSalones() {
                                                             al hacer click se redirigirá a presupuesto.html llevando el numero de salon*/
 
         /*Crea la ficha de un salon determinado en el array salones*/
+        // Agregado de bootstrap al boton.
         ficha.innerHTML = `     
             <div class="Imgs">
                 <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
                 <img src="${imagenSalon ? imagenSalon.ruta : 'images/default.jpg'}" alt="${salon.nombre}" />
                 <p>${salon.descripcion}</p>
                 <p>${salon.direccion}</p>
-                <button type="button" class="btn ${botonClase}" ${botonDisabled} ${botonOnClick}>${salon.estado}</button>
+                <button type="button" class="btn py-3 px-4 ${botonClase}" ${botonDisabled} ${botonOnClick}>${salon.estado}</button>
             </div>
         `;
 

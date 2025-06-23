@@ -33,13 +33,58 @@ picture img{
     height: auto;
 }
 
+/* Modificacion de las imagenes. */
+.Imgs {
+    background-color: rgb(235, 225, 196);
+    padding: 1%;
+    margin: 5px;
+    height: 400px;
+    border-radius: 5px;
+    border: solid 1px rgb(252, 200, 181);
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px !important;
+    
+}
+
 /* Arreglado de imagenes en exposición. */
-.Imgs img{
-    width: 100%;
+.Imgs img {
+    margin: auto;
     height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    display: block;
+}
+
+/* Centrado de los textos. */
+.Imgs p {
+    margin: 5px;
+    text-align: center;
+    color: rgb(26, 25, 25);
+    gap: 5px;
+    max-height: 80px;
+    /* Agrega un scroll al pasarse el texto */
+    overflow-y: auto;
+    /* Estilo de scroll */
+    scrollbar-width: thin;
+}
+
+/* Estilo para los titulos de los salones. */
+.Imgs h2 {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+/* Estilos para los botones. */
+.Imgs button {
+    margin-bottom: 4%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    align-self: center;
+    border-radius: 5px;
+    font-size: 12px !important;
+    text-shadow: 1px 1px 2px black;
+    /* padding: 30px; */
 }
 
 header h1 {    
