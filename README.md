@@ -2,7 +2,7 @@
 
 ## Index.
 
-    -- Muestra los salones a modo de lista que estan disponibles para comprar (Boton sin funcionamiento).
+    -- Muestra los salones que estan disponibles para reserva.
 
 
 ## altaSalon.
