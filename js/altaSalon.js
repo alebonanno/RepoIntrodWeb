@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => { //Espera a que se carge el
     mostrarSalones();
 });
 
+
 function mostrarSalones() {
     const tablaBody = document.querySelector('#tablaSalones tbody'); //Busca el elemento tbody en la tabla con el id tablaSalones 
     tablaBody.innerHTML = ''; // Limpia el contenido previo
@@ -69,6 +70,7 @@ function mostrarSalones() {
         fila.innerHTML = `                          
         <!--<td>${salon.idSalon}</td>-->
         <td>${salon.nombre}</td>
+        <td><img src="images/Salon_comedor.jpg" width="80" height="60"></td>
         <td>${salon.direccion}</td>
         <td>${salon.descripcion}</td>
         <td>${salon.valor}</td>
@@ -82,4 +84,45 @@ function mostrarSalones() {
 
 
     });
+
+    // Eventos para los botones 'editar' y 'borrar'
+    document.querySelectorAll('.borrar-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            borrarSalon(index)
+        });
+    });
+
+    document.querySelectorAll('.editar-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const index = e.target.getAttribute('data-index');
+            editarSalon(index)
+        });
+    });
+}
+
+function borrarSalon(index){
+    const salones = JSON.parse(localStorage.getItem('salones')) || [];
+    // Elimina la posición 'index' del arreglo.
+    salones.splice(index, 1);
+    // Guarda el array actualizado en localStorage.
+    localStorage.setItem('salones', JSON.stringify(salones));
+    // Vuelve a mostrar la tabla actualizada.
+    mostrarSalones()
+}
+
+
+function editarSalon(index) {
+    // Obtiene el array almacenado en localStorage.
+    // Si no existe crea un array vacio para evitar errores.
+    const salones = JSON.parse(localStorage.getItem('salones')) || [];
+    // Obtiene el salón segun el indice recibido como parámetro.
+    const salon = salones[index]
+
+    // Se guarda el indice del salón a editar, y los datos del salón.
+    // Asi se pasan los datos a la pagina de edición.
+    sessionStorage.setItem('salonAEditar', JSON.stringify({index, salon}));
+
+    // Redirige a la pagina 'altaSalon', para la edición.
+    window.location.href = 'altaSalon.html';
 }
