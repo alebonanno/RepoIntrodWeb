@@ -7,7 +7,8 @@
                 descripcion: "Salón moderno y colorido, ideal para celebraciones infantiles y eventos familiares inolvidables.",
                 valor: "120000",
                 imagenId: "1",
-                estado:"Disponible"
+                estado:"Disponible",
+                rating: 4.5
             },
             {
                 idSalon: "2",
@@ -16,7 +17,8 @@
                 descripcion: " Ofrece un ambiente selvático y divertido, perfecto para fiestas infantiles llenas de aventura y fantasía.",
                 valor: "100000",
                 imagenId: "2",
-                estado:"Disponible"
+                estado:"Disponible",
+                rating: 4.0
             },
             {
                 idSalon: "3",
@@ -25,7 +27,8 @@
                 descripcion: "Ofrece un espacio amplio y elegante, ideal para eventos sociales, reuniones y celebraciones especiales.",
                 valor: "280000",
                 imagenId: "3",
-                estado:"Reservado"
+                estado:"Reservado",
+                rating: 5.0
             },
             {
                 idSalon: "4",
@@ -34,7 +37,8 @@
                 descripcion: "Lugar perfecto para disfrutar momentos únicos, con música, color y diversión garantizada",
                 valor: "150000",
                 imagenId: "4",
-                estado:"Disponible"
+                estado:"Disponible",
+                rating: 3.5
             },
             {
                 idSalon: "5",
@@ -43,7 +47,8 @@
                 descripcion: "Lugar perfecto para disfrutar momentos únicos, con música, color y diversión garantizada",
                 valor: "240000",
                 imagenId: "5",
-                estado:"Reservado"
+                estado:"Reservado",
+                rating: 4.8
             },
             {
                 idSalon: "6",
@@ -52,7 +57,8 @@
                 descripcion: "Lugar perfecto para disfrutar momentos únicos, con música, color y diversión garantizada",
                 valor: "230000",
                 imagenId: "6",
-                estado:"Reservado"
+                estado:"Reservado",
+                rating: 3.0
             }
 
         ];
@@ -63,7 +69,7 @@
     if (!localStorage.getItem('imagenes')) { // Verificar si ya existen datos en localStorage y sino precarga unos de ejemplo
         const imagenesPrecarga = [
             { idImagenes: "0", idSalon: "0", ruta: "images/logo_idw.svg" },
-            { idImagenes: "1", idSalon: "1", ruta: "../images/happypark_slider_16.jpg" },
+            { idImagenes: "1", idSalon: "1", ruta: "images/happypark_slider_16.jpg" },
             { idImagenes: "2", idSalon: "2", ruta: "images/NUESTRAS-JUNGLAS-MIXCOAC.jpg" },
             { idImagenes: "3", idSalon: "3", ruta: "images/salon-grande.jpg" },
             { idImagenes: "4", idSalon: "4", ruta: "images/Salon_de_fiesta.jpg" }, 
@@ -101,23 +107,40 @@ function mostrarSalones() {
         const imagenSalon = imagenes.find(img => img.idSalon === salon.idSalon);
 
         // Definir clases y atributos del botón según el estado
-        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";/*operador ternario, si es reservado se vera rojo sino verde*/
+        const botonClase = salon.estado === "Reservado" ? "btn-danger" : "btn-success";//operador ternario, si es reservado se vera rojo sino verde
         const botonDisabled = salon.estado === "Reservado" ? "disabled" : "";        //operador ternario si esta Reservado el boton no estara disponible para usarlo
-        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; /*Si esta Disponible
-                                                            al hacer click se redirigirá a presupuesto.html llevando el numero de salon*/
+        const botonOnClick = salon.estado === "Disponible" ? `onclick="window.location.href='presupuesto.html?idSalon=${salon.idSalon}'"` : ""; //Si esta Disponible
+                                                            //al hacer click se redirigirá a presupuesto.html llevando el numero de salon
 
-        /*Crea la ficha de un salon determinado en el array salones*/
+        //Crea la ficha de un salon determinado en el array salones
         // Agregado de bootstrap al boton.
         ficha.innerHTML = `     
             <div class="Imgs">
                 <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
+                <p class="rating-text">Rating: ${generarEstrellas(salon.rating || 0)} (${salon.rating || 'N/A'}/5)</p>
                 <img src="${imagenSalon ? imagenSalon.ruta : 'images/default.jpg'}" alt="${salon.nombre}" />
-                <p>${salon.descripcion}</p>
-                <p>${salon.direccion}</p>
-                <button type="button" class="btn py-3 px-4 ${botonClase}" ${botonDisabled} ${botonOnClick}>${salon.estado}</button>
+                <p class="description-text">${salon.descripcion}</p>
+                <p class="direccion-text">${salon.direccion}</p>
+                <button type="button" class="btn py-2 px-3 ${botonClase}" ${botonDisabled} ${botonOnClick}>${salon.estado}</button>
             </div>
         `;
 
         contenedor.appendChild(ficha);  //Muestra la ficha en el html
     });
+}
+
+// Función para mostrar las estrellas del rating.
+function generarEstrellas(rating) {
+    const estrellasLlenas = Math.floor(rating);
+    const mediaEstrella = rating % 1 >= 0.5;
+
+    let estrellasHTML = '';
+
+    for (let i = 0; i < estrellasLlenas; i++) {
+        estrellasHTML += '⭐';
+    }
+    if (mediaEstrella) {
+        estrellasHTML += '✨';
+    }
+    return estrellasHTML;
 }

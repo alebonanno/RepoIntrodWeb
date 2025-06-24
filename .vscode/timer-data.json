@@ -1,5 +1,11 @@
 {
-  "totalTime": 43453.92899999998,
-  "otherTime": 61855.210000000065,
-  "lastUpdated": "Sun Jun 22 2025 23:18:30 GMT-0300 (Argentina Standard Time)"
+<<<<<<< HEAD
+  "totalTime": 43360.79499999998,
+  "otherTime": 61522.30200000006,
+  "lastUpdated": "Sun Jun 22 2025 18:51:06 GMT-0300 (Argentina Standard Time)"
+=======
+  "totalTime": 36664.812999999995,
+  "otherTime": 55769.014000000054,
+  "lastUpdated": "Sat Jun 21 2025 20:54:48 GMT-0300 (Argentina Standard Time)"
+>>>>>>> 8ecee82eee3c7a546cea3316c7ad7fa3419a3327
 }
