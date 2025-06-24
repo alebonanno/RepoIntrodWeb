@@ -35,6 +35,11 @@ textarea{
     vertical-align: middle;
 }
 
+td, th {
+    vertical-align: middle;
+    text-align: center;
+}
+
 /* Modificación del footer. */
 footer {
     text-align: right;
