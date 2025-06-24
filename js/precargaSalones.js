@@ -114,10 +114,11 @@ function mostrarSalones() {
 
         //Crea la ficha de un salon determinado en el array salones
         // Agregado de bootstrap al boton.
+        // Se agrega de manera generica un 'rating de 4/5' para losnuevos salones creados.
         ficha.innerHTML = `     
             <div class="Imgs">
                 <h2>${salon.nombre}: <br/>$ ${salon.valor}</h2>
-                <p class="rating-text">Rating: ${generarEstrellas(salon.rating || 0)} (${salon.rating || 'N/A'}/5)</p>
+                <p class="rating-text">Rating: ${generarEstrellas(salon.rating || 0)} (${salon.rating || '4'}/5)</p>
                 <img src="${imagenSalon ? imagenSalon.ruta : 'images/default.jpg'}" alt="${salon.nombre}" />
                 <p class="description-text">${salon.descripcion}</p>
                 <p class="direccion-text">${salon.direccion}</p>
